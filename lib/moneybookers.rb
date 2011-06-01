@@ -1,0 +1,3 @@
+module Moneybookers
+  # Your code goes here...
+end
