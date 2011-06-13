@@ -22,8 +22,17 @@ module Moneybookers
       @response = http.post(path, prepare_params(params), headers)
     end
 
+    def get(to, params={})
+      @path = path_with_params(to, params)
+      @response = http.get(path, headers)
+    end
+
     def prepare_params(params)
       params.map { |k, v| "#{k}=#{v}" }.join("&")
+    end
+
+    def path_with_params(path, params)
+      params.empty? ? URI.parse(path).path : URI.parse(path + "?" + prepare_params(params)).to_s
     end
 
     def headers

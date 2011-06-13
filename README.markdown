@@ -2,6 +2,7 @@
 Ruby client for [Moneybookers](http://moneybookers.com/) service.
 
 Refer to Moneybookers documentation:
+
 * [Automated Payment Interface](http://www.moneybookers.com/merchant/pl/automated_payments_interface_manual.pdf)
 * [Payment Gateway](http://www.moneybookers.com/merchant/pl/moneybookers_gateway_manual.pdf)
 
@@ -18,6 +19,13 @@ Moneybookers.configure do |config|
 end
 ```
 
+NOTE: You can create md5 of your credentials by:
+
+``` ruby
+require "digest/md5"
+Digest::MD5.hexdigest("your-secret-word")
+```
+
 ## Payment Gateway ##
 
 You can prepare payment gateway form by sending params and retrieving session_id (that will be used in rendering form).
@@ -28,13 +36,14 @@ client.prepare
 client.session_id
 ```
 Having session_id you can render moneybookers form from url:
+
 ```
 https://www.moneybookers.com/app/payment.pl?sid=prepared-session-id-from-previous-request
 ```
 
 ## API ##
 
-To use Moneybookers API you must add your IP address to allowed, through moneybookers admin panel.
+NOTE: To use Moneybookers API you must add your IP address to allowed, through moneybookers admin panel.
 
 ### Pay On Demand ##
 
@@ -46,6 +55,7 @@ client.prepare
 client.request
 ```
 This is done in 2 steps.
+
 1. Preparing transaction and retrieving session_id (prepare)
 2. Charging user (request)
 
@@ -56,6 +66,7 @@ Those requests will be sent from theirs IP pool, that are available by:
 ``` ruby
 Moneybookers::SERVICE_IPS
 ```
+
 NOTE: you should always check if this IPs are still accurate by contacting Moneybookers support.
 
 ## TODO: ##
