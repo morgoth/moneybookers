@@ -63,6 +63,7 @@ This is done in 2 steps.
 
 Moneybookers can send confirmation of each transaction (when status_url was specified).
 Those requests will be sent from theirs IP pool, that are available by:
+
 ``` ruby
 Moneybookers::SERVICE_IPS
 ```
@@ -75,5 +76,7 @@ NOTE: you should always check if this IPs are still accurate by contacting Money
 * Docs
 
 ## Copyright ##
+
+Created during development for [Ragnarson](http://ragnarson.com/)
 
 Copyright © 2011 Wojciech Wnętrzak. See LICENSE for details.
